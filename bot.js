@@ -21,9 +21,23 @@ function retweet(searchText) {
       let tweetIDList = [];
       for (let tweet of tweets) {
         tweetIDList.push(tweet.id_str);
-
-        //more code here later...
+        if (tweet.text.startsWith("RT @")) {
+          if (tweet.retweeted_status) {
+            tweetIDList.push(tweet.retweeted_status.id_str);
+          } else {
+            tweetIDList.push(tweet.id_str);
+          }
+        } else {
+          tweetIDList.push(tweet.id_str);
+        }
       }
+      // Utility function - Gives unique elements from an array
+      function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+      }
+
+      // Get only unique entries
+      tweetIDList = tweetIDList.filter(onlyUnique);
 
       // Call the 'statuses/retweet/:id' API endpoint for retweeting EACH of the tweetID
       for (let tweetID of tweetIDList) {

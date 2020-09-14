@@ -64,6 +64,6 @@ function retweet(searchText) {
 // Run every 60 seconds
 setInterval(function () {
   retweet(
-    "#TT228 OR #Tgtwittos OR #Togolais OR #Togolaise OR #team228 OR #Denyigban OR #TgTech"
+    "#TT228 OR #Tgtwittos OR #Togolais OR #Togolaise OR #team228 OR #Denyigban OR #TgTech OR #228GiveYourBlood"
   );
 }, 60000);
